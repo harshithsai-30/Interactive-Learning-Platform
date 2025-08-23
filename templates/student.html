@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Courses Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .menu {
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .menu button {
+            width: 150px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        .subjects, .topics, .subtopics {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .topics button, .subtopics button {
+            background-color: #FF5722;
+            padding: 8px;
+            margin: 5px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .topics button:hover, .subtopics button:hover {
+            background-color: #E64A19;
+            transform: translateX(5px);
+        }
+
+        .content {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .topics, .subtopics {
+            margin-top: 10px;
+        }
+
+        .content h3 {
+            color: #4CAF50;
+        }
+
+        .video, .pdf-viewer {
+            margin-top: 10px;
+            display: none; /* Initially hidden */
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf a {
+            text-decoration: none;
+            color: #FF5722;
+            font-weight: bold;
+        }
+
+        .pdf a:hover {
+            color: #E64A19;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to the Student Courses</h1>
+
+<div class="menu">
+    <button onclick="toggleSubjects()">Subjects</button>
+    <button onclick="showDoubts()">Doubts</button>
+</div>
+
+<!-- Subjects Section -->
+<div id="subjects" class="subjects content">
+    <button onclick="showContent('math')">Math</button>
+    <button onclick="showContent('science')">Science</button>
+</div>
+
+<!-- Math Topics Section -->
+<div id="math" class="content topics">
+    <h2>Math Topics</h2>
+    <button onclick="showMathSubContent('algebra')">Algebra</button>
+    <button onclick="showMathSubContent('geometry')">Geometry</button>
+    <button onclick="showMathSubContent('calculus')">Calculus</button>
+
+    <!-- Math Subtopics -->
+    <div id="algebra" class="subtopics">
+        <h3>Algebra Topics</h3>
+        <button onclick="showResources('algebra-linear')">Linear Equations</button>
+        <button onclick="showResources('algebra-quadratic')">Quadratic Equations</button>
+        <button onclick="showResources('algebra-polynomials')">Polynomials</button>
+
+        <!-- Algebra Video and PDF -->
+        <div class="video" id="algebra-linear">
+            <h4>Linear Equations Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/Ft2_QtXAnh8?si=o3hmSsiMvJPwuCR7" allowfullscreen></iframe>
+            </div>
+            <h4>Linear Equations PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\chapter-5_241010_102339.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="algebra-quadratic">
+            <h4>Quadratic Equations Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/qeByhTF8WEw?si=SDHtoxhMS9y4FGa0" allowfullscreen></iframe>
+            </div>
+            <h4>Quadratic Equations PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\2-QUADRATIC-EQUATIONS-AND-INEQUALITIES-THEORY_241010_102423.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="algebra-polynomials">
+            <h4>Polynomials Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/9MUDAr1PnlE?si=awzhbbDeOWfDaEgV" allowfullscreen></iframe>
+            </div>
+            <h4>Polynomials PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\2-QUADRATIC-EQUATIONS-AND-INEQUALITIES-THEORY_241010_102423.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="geometry" class="subtopics">
+        <h3>Geometry Topics</h3>
+        <button onclick="showResources('geometry-triangles')">Triangles</button>
+        <button onclick="showResources('geometry-circles')">Circles</button>
+        <button onclick="showResources('geometry-coordinate')">Coordinate Geometry</button>
+
+        <!-- Geometry Video and PDF -->
+        <div class="video" id="geometry-triangles">
+            <h4>Triangles Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/q7vI2oXL0gQ?si=4cG9zK6nyOUxjE2w" allowfullscreen></iframe>
+            </div>
+            <h4>Triangles PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\triangles.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="geometry-circles">
+            <h4>Circles Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/Fzaof9cX-PM?si=Yb_iG9N4lVw_9wC1" allowfullscreen></iframe>
+            </div>
+            <h4>Circles PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\circles.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="calculus" class="subtopics">
+        <h3>Calculus Topics</h3>
+        <button onclick="showResources('calculus-differentiation')">Differentiation</button>
+        <button onclick="showResources('calculus-integration')">Integration</button>
+        <button onclick="showResources('calculus-limits')">Limits and Continuity</button>
+
+        <!-- Calculus Video and PDF -->
+        <div class="video" id="calculus-differentiation">
+            <h4>Differentiation Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/IvLpN1G1Ncg?si=PUK-Z1-DkKFtrRRc" allowfullscreen></iframe>
+            </div>
+            <h4>Differentiation PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\differentiation.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="calculus-integration">
+            <h4>Integration Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/6WUjbJEeJwM?si=kfquHLg1sA6IN4lG" allowfullscreen></iframe>
+            </div>
+            <h4>Integration PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\integration.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="calculus-limits">
+            <h4>Limits and Continuity Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/9brk313DjV8?si=FgAREd0e505o1QtO" allowfullscreen></iframe>
+            </div>
+            <h4>Limits and Continuity PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\limits and continuity.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Science Topics Section -->
+<div id="science" class="content topics">
+    <h2>Science Topics</h2>
+    <button onclick="showScienceSubContent('physics')">Physics</button>
+    <button onclick="showScienceSubContent('chemistry')">Chemistry</button>
+    <button onclick="showScienceSubContent('biology')">Biology</button>
+
+    <!-- Science Subtopics -->
+    <div id="physics" class="subtopics">
+        <h3>Physics Topics</h3>
+        <button onclick="showResources('physics-kinematics')">Kinematics</button>
+        <button onclick="showResources('physics-dynamics')">Dynamics</button>
+        <button onclick="showResources('physics-thermodynamics')">Thermodynamics</button>
+
+        <!-- Physics Video and PDF -->
+        <div class="video" id="physics-kinematics">
+            <h4>Kinematics Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/2QC2EW8b_Ww?si=V0ObEy82qelBqMpM" allowfullscreen></iframe>
+            </div>
+            <h4>Kinematics PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\kinematics.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="physics-dynamics">
+            <h4>Dynamics Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/iAMxWvyykRU?si=J9fPBgjr4F9toINL" allowfullscreen></iframe>
+            </div>
+            <h4>Dynamics PDF</h4>
+            <div class="iframe-container">
+                <iframe src=""C:\Users\sasid\Downloads\chapter-5_241010_102339.pdf"" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="physics-thermodynamics">
+            <h4>Thermodynamics Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/4_YFfWgR7A8" allowfullscreen></iframe>
+            </div>
+            <h4>Thermodynamics PDF</h4>
+            <div class="iframe-container">
+                <iframe src=""C:\Users\sasid\Downloads\thermodynamics.pdf"" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="chemistry" class="subtopics">
+        <h3>Chemistry Topics</h3>
+        <button onclick="showResources('chemistry-atomic')">Atomic Structure</button>
+        <button onclick="showResources('chemistry-bonding')">Bonding</button>
+        <button onclick="showResources('chemistry-thermochemistry')">Thermochemistry</button>
+
+        <!-- Chemistry Video and PDF -->
+        <div class="video" id="chemistry-atomic">
+            <h4>Atomic Structure Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/ge41t9B7C7Q?si=24H3h-rT22r6-YAs" allowfullscreen></iframe>
+            </div>
+            <h4>Atomic Structure PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\atomic.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="chemistry-bonding">
+            <h4>Bonding Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/RmlX574MbDw?si=rPHOBy_mPhUXSeFk" allowfullscreen></iframe>
+            </div>
+            <h4>Bonding PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\cb.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="chemistry-thermochemistry">
+            <h4>Thermochemistry Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/ZVhJ4TO8a-M?si=o0v9mqLeq03pObF6" allowfullscreen></iframe>
+            </div>
+            <h4>Thermochemistry PDF</h4>
+            <div class="iframe-container">
+                <iframe src="https://drive.google.com/file/d/1QXTYB6L6JHKFf4F1iHjq-LXHZn1G7R4u/preview" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="biology" class="subtopics">
+        <h3>Biology Topics</h3>
+        <button onclick="showResources('biology-cell')">Cell Biology</button>
+        <button onclick="showResources('biology-genetics')">Genetics</button>
+        <button onclick="showResources('biology-ecology')">Ecology</button>
+
+        <!-- Biology Video and PDF -->
+        <div class="video" id="biology-cell">
+            <h4>Cell Biology Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/t5DvF5OVr1Y?si=09AKedF1o57IVDHU" allowfullscreen></iframe>
+            </div>
+            <h4>Cell Biology PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\Lecture_Cell_Biology.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="biology-genetics">
+            <h4>Genetics Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/mcEV3m9SG9M?si=xO-OlQanPSMU5Pa7" allowfullscreen></iframe>
+            </div>
+            <h4>Genetics PDF</h4>
+            <div class="iframe-container">
+                <iframe src="C:\Users\sasid\Downloads\genetics.pdf" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video" id="biology-ecology">
+            <h4>Ecology Video</h4>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/bnOpBv9yNeI" allowfullscreen></iframe>
+            </div>
+            <h4>Ecology PDF</h4>
+            <div class="iframe-container">
+                <iframe src="https://drive.google.com/file/d/1ow7zHA20I5od4Xz2hRBCs2ONpu5DEOYy/preview" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSubjects() {
+        const subjects = document.getElementById('subjects');
+        subjects.style.display = subjects.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function showContent(subject) {
+        const topics = document.querySelectorAll('.topics');
+        topics.forEach(topic => topic.style.display = 'none');
+
+        const selectedTopic = document.getElementById(subject);
+        selectedTopic.style.display = 'block';
+    }
+
+    function showMathSubContent(subtopic) {
+        const subtopics = document.querySelectorAll('#math .subtopics');
+        subtopics.forEach(sub => sub.style.display = 'none');
+
+        const selectedSubtopic = document.getElementById(subtopic);
+        selectedSubtopic.style.display = 'block';
+    }
+
+    function showScienceSubContent(subtopic) {
+        const subtopics = document.querySelectorAll('#science .subtopics');
+        subtopics.forEach(sub => sub.style.display = 'none');
+
+        const selectedSubtopic = document.getElementById(subtopic);
+        selectedSubtopic.style.display = 'block';
+    }
+
+    function showResources(resourceId) {
+        const videos = document.querySelectorAll('.video');
+        videos.forEach(video => video.style.display = 'none');
+
+        const selectedVideo = document.getElementById(resourceId);
+        selectedVideo.style.display = 'block';
+    }
+
+    function showDoubts() {
+        alert("For any doubts, please contact your instructor.");
+    }
+</script>
+
+</body>
+</html>
